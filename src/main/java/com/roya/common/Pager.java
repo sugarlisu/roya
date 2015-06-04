@@ -9,7 +9,7 @@ package com.roya.common;
 public class Pager {
 	
 	/**
-	 * 最大分页数量
+	 * 最大分页数量 
 	 */
 	public static final int MAX_PAGE_SIZE = 100;
 	
