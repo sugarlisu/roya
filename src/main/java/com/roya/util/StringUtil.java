@@ -20,9 +20,7 @@ import org.apache.log4j.Logger;
  * 
 * @ClassName: StringUtil 
 * @Description: String字符串静态处理类 
-* @author chenming 
-* @date 2014年7月21日 上午10:46:03 
-*
+* lisu
  */
 public class StringUtil {
 	

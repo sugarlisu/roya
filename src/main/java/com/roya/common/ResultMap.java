@@ -8,10 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * @Title: ResultMap.java
- * @Package com.financing.platform.common
  * @Description: jsonp换回结果 
- * @author  qiye
- * @date 2014年12月1日 上午10:51:29
  * @version V1.0
  */
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)

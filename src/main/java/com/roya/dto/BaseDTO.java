@@ -11,19 +11,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public abstract class BaseDTO implements Serializable{
 	
-	/** 
-	* @Fields serialVersionUID :   
-	*/ 
-	private static final long serialVersionUID = -3393866310929889346L;
-	private Integer pageCount ; //总页数
-	private Integer totalCount; //总条数
-	private Integer pageNo ;//当前页数
-	private Integer pageSize ;//每页数据条数
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -865860812662173458L;
 	
-	private Integer begin; //开始记录条数
-	private Integer end;   //结束记录条数
+	private Integer id;// 主键
 	
-    private String createBy    ;//创建人  
+	private String createBy    ;//创建人  
     
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createDate ;//创建时间
@@ -33,56 +28,18 @@ public abstract class BaseDTO implements Serializable{
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updateDate ;//修改时间
     
-    private String deleteTag; //删除标志
-    
-    private String orderBy; //排序规则
-    
-    private String orderByTag; //desc asc
-    
-
-	public Integer getPageCount() {
-		return pageCount;
+    private String deleteTag; //删除标志	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setPageCount(Integer pageCount) {
-		this.pageCount = pageCount;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public Integer getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(Integer pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public Integer getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(Integer pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public Integer getBegin() {
-		if(pageNo != null && pageSize != null){
-			this.begin = (pageNo-1)*pageSize;
-		}else{
-			return null;
-		}
-		return begin;
-	}
-
-	public void setBegin(Integer begin) {
-		this.begin = begin;
-	}
-
-	public Integer getEnd() {
-		return pageSize;
-	}
-
-	public void setEnd(Integer end) {
-		this.end = end;
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
 	}
 
 	public String getCreateBy() {
@@ -124,33 +81,5 @@ public abstract class BaseDTO implements Serializable{
 	public void setDeleteTag(String deleteTag) {
 		this.deleteTag = deleteTag;
 	}
-
-	public Integer getTotalCount() {
-		return totalCount;
-	}
-
-	public void setTotalCount(Integer totalCount) {
-		this.totalCount = totalCount;
-	}
 	
-	public String getOrderBy() {
-		return orderBy;
-	}
-
-	public void setOrderBy(String orderBy) {
-		this.orderBy = orderBy;
-	}
-	
-	public String getOrderByTag() {
-		return orderByTag;
-	}
-
-	public void setOrderByTag(String orderByTag) {
-		this.orderByTag = orderByTag;
-	}
-
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-	}
 }

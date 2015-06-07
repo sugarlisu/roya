@@ -5,7 +5,8 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import com.roya.dto.BaseDTO;
-import com.roya.dto.UserInfoDTO;
+import com.roya.dto.UserMeetingDTO;
+
 
 public class DTOdateSet {
 	
@@ -23,8 +24,8 @@ public class DTOdateSet {
 	public static final BaseDTO setCreateInfo(BaseDTO baseDTO,HttpSession session){
 		String createBy ="system";
 		if(null != session && null != session.getAttribute(user)){
-			UserInfoDTO userinfo = (UserInfoDTO) session.getAttribute(user);
-			createBy = userinfo.getUsername();
+			UserMeetingDTO userinfo = (UserMeetingDTO) session.getAttribute(user);
+			createBy = userinfo.getName();
 		}
 		if(null != baseDTO){
 			baseDTO.setCreateDate(new Date(System.currentTimeMillis()));
@@ -46,8 +47,8 @@ public class DTOdateSet {
 	public static final BaseDTO setUpdateInfo(BaseDTO baseDTO,HttpSession session){
 		String updateBy ="system";
 		if(null != session && null != session.getAttribute(user)){
-			UserInfoDTO userinfo = (UserInfoDTO) session.getAttribute(user);
-			updateBy = userinfo.getUsername();
+			UserMeetingDTO userinfo = (UserMeetingDTO) session.getAttribute(user);
+			updateBy = userinfo.getName();
 		}
 		if(null != baseDTO){
 			baseDTO.setUpdateDate(new Date(System.currentTimeMillis()));

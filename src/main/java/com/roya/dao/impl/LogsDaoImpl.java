@@ -13,7 +13,7 @@ import com.roya.util.SqlName;
 public class LogsDaoImpl extends BaseDaoImpl implements ILogsDao {
 
 	public int addLog(LogsDTO logsDTO) throws SQLException {
-		return (Integer) this.sqlMapClient.insert(SqlName.addLogs, logsDTO);
+		return (Integer) this.sqlMapClientLocal.insert(SqlName.addLogs, logsDTO);
 	}
 
 }

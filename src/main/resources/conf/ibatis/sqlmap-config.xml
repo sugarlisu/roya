@@ -9,7 +9,10 @@
 		maxSessions="64" maxTransactions="20" useStatementNamespaces="true" />
 	<!-- Identify all SQL Map XML files to be loaded by this SQL map. Notice 
 		the paths are relative to the classpath. -->
-	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-projectInfo.xml" />
 	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-logs.xml" />
-	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-interfaceInfo.xml" />
+	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-usermeeting.xml" />
+	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-address.xml" />
+	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-document.xml" />
+	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-schedule.xml" />
+	
 </sqlMapConfig>

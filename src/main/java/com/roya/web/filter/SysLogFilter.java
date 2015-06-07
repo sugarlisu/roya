@@ -24,7 +24,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import com.roya.dto.UserInfoDTO;
+import com.roya.dto.UserMeetingDTO;
 import com.roya.service.ILogsService;
 import com.roya.util.DTOdateSet;
 
@@ -60,7 +60,7 @@ public class SysLogFilter implements Filter,ApplicationContextAware{
 		
 		String URI = httpRequest.getRequestURI();
 		String actionName = URI.substring(URI.lastIndexOf("/")+1);
-		UserInfoDTO userInfoDTO = (UserInfoDTO) session.getAttribute(DTOdateSet.user);
+		UserMeetingDTO userInfoDTO = (UserMeetingDTO) session.getAttribute(DTOdateSet.user);
 		if(actionName.endsWith(".shtml"))
 		{
 			Map<String,Object> params = new HashMap<String,Object>();
@@ -80,7 +80,7 @@ public class SysLogFilter implements Filter,ApplicationContextAware{
 			
 			try {
 			if(userInfoDTO!= null){
-				logsServiceImpl.addLog(actionName, JSONObject.fromObject(params).toString(), userInfoDTO.getUserNickname());
+				logsServiceImpl.addLog(actionName, JSONObject.fromObject(params).toString(), userInfoDTO.getName());
 			}else{
 				logsServiceImpl.addLog(actionName, JSONObject.fromObject(params).toString(), "system");
 			}

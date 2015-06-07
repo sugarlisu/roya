@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!--会议文件-->
+<sqlMap namespace="document">
+	<resultMap class="com.roya.dto.DocumentDTO" id="documentResult">
+		<result property="title" column="title"/>
+		<result property="weburl" column="weburl"/>
+		<result property="filetype" column="filetype"/>
+	</resultMap> 
+	<select id="queryDocumentList" resultMap="documentResult"  parameterClass="com.roya.dto.DocumentDTO">
+			SELECT
+				d.title,d.weburl,d.filetype
+			FROM
+				document d
+			INNER JOIN
+				user_meeting um
+			on
+			d.meetingid = um.meetingid
+			and um.uid = #uid#
+	</select>
+</sqlMap>

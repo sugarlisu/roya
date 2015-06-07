@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 /**
  * 辅助日期处理的一些通用的方法
  * 
- * @author Lancy Cen
+ * @author lisu
  * @version 1.0
  */
 
