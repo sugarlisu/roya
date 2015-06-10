@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- s -->
+<sqlMap namespace="job">
+	<resultMap class="com.roya.dto.AddressListDTO" id="addressListResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="orgId" column="org_id"/>
+		<result property="phone" column="phone"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="gender" column="gender"/>
+		<result property="nation" column="nation"/>
+		<result property="position" column="position"/>
+		<result property="email" column="email"/>
+		<result property="intro" column="intro"/>
+	</resultMap> 
+	<select id="queryAddressList" resultMap="addressListResult"  >
+			SELECT
+				*
+			FROM
+				address_list al
+	</select>
+	<insert id="addAddressList" parameterClass="com.roya.dto.AddressListDTO">
+		<![CDATA[
+		INSERT INTO address_list (
+			id,
+			name,
+			org_id,
+			phone,
+			create_time,
+			update_time,
+			gender,
+			nation,
+			position,
+			email,
+			intro
+		)
+		VALUES
+			(
+				#id#,
+			  	#name#,
+				#orgId#,
+				#phone#,
+				#createTime#,
+				#updateTime#,
+				#gender#,
+				#nation#,
+				#position#,
+				#email#,
+				#intro#
+			)
+			]]> 
+	</insert> 
+	<delete id="delAddressList">
+		TRUNCATE TABLE address_list;
+	</delete>
+	
+	<resultMap class="com.roya.dto.AddressOrgDTO" id="addressOrgResult">
+		<result property="id" column="id"/>
+		<result property="corporationId" column="corporation_id"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="orgName" column="org_name"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap> 
+	<select id="queryAddressOrgList" resultMap="addressOrgResult"  >
+			SELECT
+				*
+			FROM
+				address_organization al
+	</select>
+	<insert id="addAddressOrg" parameterClass="com.roya.dto.AddressOrgDTO">
+		<![CDATA[
+		INSERT INTO address_organization (
+			id,
+			corporation_id,
+			parent_id,
+			org_name,
+			create_time,
+			update_time
+		)
+		VALUES
+			(
+				#id#,
+			  	#corporationId#,
+				#parentId#,
+				#orgName#,
+				#createTime#,
+				#updateTime#
+			)
+			]]> 
+	</insert> 
+	<delete id="delAddressOrg">
+		TRUNCATE TABLE address_organization
+	</delete>
+	
+	<resultMap class="com.roya.dto.DocumentJobDTO" id="documentResult">
+		<result property="id" column="id"/>
+		<result property="meetingid" column="meetingid"/>
+		<result property="name" column="name"/>
+		<result property="title" column="title"/>
+		<result property="size" column="size"/>
+		<result property="filetype" column="filetype"/>
+		<result property="weburl" column="weburl"/>
+		<result property="dlurl" column="dlurl"/>
+		<result property="pdfdoc" column="pdfdoc"/>
+		<result property="pdfdocsize" column="pdfdocsize"/>
+		<result property="documenttypeid" column="documenttypeid"/>
+		<result property="priority" column="priority"/>
+		<result property="isconfidential" column="isconfidential"/>
+		<result property="iswhitelist" column="iswhitelist"/>
+		<result property="isdownload" column="isdownload"/>
+		<result property="passwordType" column="password_type"/>
+		<result property="pdfpassword" column="pdfpassword"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="issync" column="issync"/>
+		<result property="isoriginaldoc" column="isoriginaldoc"/>
+		<result property="insertTime" column="insert_time"/>
+		<result property="hassyncowner" column="hassyncowner"/>
+		<result property="watermarkerType" column="watermarker_type"/>
+		<result property="watermarkerText" column="watermarker_text"/>
+		<result property="isprintsecret" column="isprintsecret"/>
+	</resultMap> 
+	<select id="queryDocumentList" resultMap="documentResult"  >
+			SELECT
+				*
+			FROM
+				document al
+	</select>
+	<insert id="addDocument" parameterClass="com.roya.dto.DocumentJobDTO">
+		<![CDATA[
+		INSERT INTO document (
+			id,
+			meetingid,
+			name,
+			title,
+			size,
+			filetype,
+			weburl,
+			dlurl,
+			pdfdoc,
+			pdfdocsize,
+			documenttypeid,
+			priority,
+			isconfidential,
+			iswhitelist,
+			isdownload,
+			password_type,
+			pdfpassword,
+			update_time,
+			issync,
+			isoriginaldoc,
+			insert_time,
+			hassyncowner,
+			watermarker_type,
+			watermarker_text,
+			isprintsecret
+		)
+		VALUES
+			(
+				#id#,
+			  	#meetingid#,
+				#name#,
+				#title#,
+				#size#,
+				#filetype#,
+				#weburl#,
+				#dlurl#,
+				#pdfdoc#,
+				#pdfdocsize#,
+				#documenttypeid#,
+				#priority#,
+				#isconfidential#,
+				#iswhitelist#,
+				#isdownload#,
+				#passwordType#,
+				#pdfpassword#,
+				#updateTime#,
+				#issync#,
+				#isoriginaldoc#,
+				#insertTime#,
+				#hassyncowner#,
+				#watermarkerType#,
+				#watermarkerText#,
+				#isprintsecret#
+			)
+			]]> 
+	</insert> 
+	<delete id="delDocument">
+		TRUNCATE TABLE document
+	</delete>
+	
+	
+	<resultMap class="com.roya.dto.MeetingJobDTO" id="meetingResult">
+		<result property="meetingid" column="meetingid"/>
+		<result property="corporationid" column="corporationid"/>
+		<result property="title" column="title"/>
+		<result property="sdate" column="sdate"/>
+		<result property="edate" column="edate"/>
+		<result property="province" column="province"/>
+		<result property="city" column="city"/>
+		<result property="welcomewords" column="welcomewords"/>
+		<result property="abdate" column="abdate"/>
+		<result property="aedate" column="aedate"/>
+		<result property="location" column="location"/>
+		<result property="lat" column="lat"/>
+		<result property="lon" column="lon"/>
+		<result property="subjectevaaudit" column="subjectevaaudit"/>
+		<result property="weiboaudit" column="weiboaudit"/>
+		<result property="topicquestionaudit" column="topicquestionaudit"/>
+		<result property="opencontact" column="opencontact"/>
+		<result property="deleted" column="deleted"/>
+		<result property="psdrule" column="psdrule"/>
+		<result property="checkcount" column="checkcount"/>
+		<result property="twodcode" column="twodcode"/>
+		<result property="checkradius" column="checkradius"/>
+		<result property="guestcount" column="guestcount"/>
+		<result property="signinlat" column="signinlat"/>
+		<result property="signinlon" column="signinlon"/>
+		<result property="guestversion" column="guestversion"/>
+		<result property="watermarktype" column="watermarktype"/>
+		<result property="openpsdlogin" column="openpsdlogin"/>
+		<result property="meettype" column="meettype"/>
+		<result property="meetsubtype" column="meetsubtype"/>
+		
+	</resultMap> 
+	<select id="queryMeetingList" resultMap="meetingResult"  >
+			SELECT
+				*
+			FROM
+				meeting al
+	</select>
+	<insert id="addMeeting" parameterClass="com.roya.dto.MeetingJobDTO">
+		<![CDATA[
+		INSERT INTO meeting (
+			meetingid,
+			corporationid,
+			title,
+			sdate,
+			edate,
+			province,
+			city,
+			welcomewords,
+			abdate,
+			aedate,
+			location,
+			lat,
+			lon,
+			subjectevaaudit,
+			weiboaudit,
+			topicquestionaudit,
+			opencontact,
+			deleted,
+			psdrule,
+			checkcount,
+			checktype,
+			twodcode,
+			checkradius,
+			guestcount,
+			signinlat,
+			signinlon,
+			guestversion,
+			watermarktype,
+			openpsdlogin,
+			meettype,
+			meetsubtype
+			
+		)
+		VALUES
+			(
+				#meetingid#,
+			  	#corporationid#,
+				#title#,
+				#sdate#,
+				#edate#,
+				#province#,
+				#city#,
+				#welcomewords#,
+				#abdate#,
+				#aedate#,
+				#location#,
+				#lat#,
+				#lon#,
+				#subjectevaaudit#,
+				#weiboaudit#,
+				#topicquestionaudit#,
+				#opencontact#,
+				#deleted#,
+				#psdrule#,
+				#checkcount#,
+				#checktype#,
+				#twodcode#,
+				#checkradius#,
+				#guestcount#,
+				#signinlat#,
+				#signinlon#,
+				#guestversion#,
+				#watermarktype#,
+				#openpsdlogin#,
+				#meettype#,
+				#meetsubtype#
+				
+			)
+			]]> 
+	</insert> 
+	<delete id="delMeeting">
+		TRUNCATE TABLE meeting
+	</delete>
+	
+	<resultMap class="com.roya.dto.UserMeetingJobDTO" id="userMeetingResult">
+		<result property="id" column="id"/>
+		<result property="uid" column="uid"/>
+		<result property="meetingid" column="meetingid"/>
+		<result property="psd" column="psd"/>
+		<result property="city" column="city"/>
+		<result property="name" column="name"/>
+		<result property="position" column="position"/>
+		<result property="lastLogin" column="last_login"/>
+		<result property="comment" column="comment"/>
+		<result property="loginCount" column="login_count"/>
+		<result property="markertext" column="markertext"/>
+	</resultMap> 
+	<select id="queryUserMeetingList" resultMap="userMeetingResult"  >
+			SELECT
+				*
+			FROM
+				user_meeting al
+	</select>
+	<insert id="addUserMeeting" parameterClass="com.roya.dto.UserMeetingJobDTO">
+		<![CDATA[
+		INSERT INTO user_meeting (
+			id,
+			uid,
+			meetingid,
+			psd,
+			city,
+			name,
+			position,
+			last_login,
+			comment,
+			login_count,
+			markertext
+		)
+		VALUES
+			(
+				#id#,
+				#uid#,
+			  	#meetingid#,
+			  	#psd#,
+			  	#city#,
+			  	#name#,
+			  	#position#,
+				#lastLogin#,
+				#comment#,
+				#loginCount#,
+				#markertext#
+			)
+			]]> 
+	</insert> 
+	<delete id="delUserMeeting">
+		TRUNCATE TABLE user_meeting
+	</delete>
+</sqlMap>

@@ -8,10 +8,6 @@ package com.roya.vo;
  * lisu
  */
 public class UserMeetingVO {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6981576342271069658L;
 	private String uid;// 用户ID
 	private String name;// 用户姓名
 	private String position;// 用户角色

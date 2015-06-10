@@ -7,6 +7,7 @@ import com.roya.dto.AddressListDTO;
 import com.roya.dto.AddressOrgDTO;
 import com.roya.dto.DocumentJobDTO;
 import com.roya.dto.MeetingJobDTO;
+import com.roya.dto.UserMeetingJobDTO;
 
 
 public interface ITableJobDao extends IBaseDao {
@@ -131,5 +132,35 @@ public interface ITableJobDao extends IBaseDao {
 	* @throws
 	 */
 	public void delMeeting() throws SQLException;
+	
+	/**
+	 * 
+	* @Title: queryAddressList 
+	* @Description: 用户会议列表
+	* @param   AddressListDTO
+	* @return AddressListDTO   
+	* @throws
+	 */
+	public List<UserMeetingJobDTO> queryUserMeetingList() throws SQLException;
+	
+	/**
+	 * 
+	* @Title: addAddressOrg 
+	* @Description: 添加用户会议
+	* @param   AddressOrgDTO
+	* @return AddressOrgDTO   
+	* @throws
+	 */
+	public void addUserMeeting(UserMeetingJobDTO dto) throws SQLException;
+	
+	/**
+	 * 
+	* @Title: addAddressList 
+	* @Description: 删除用户会议
+	* @param   AddressListDTO
+	* @return AddressListDTO   
+	* @throws
+	 */
+	public void delUserMeeting() throws SQLException;
 	
 }

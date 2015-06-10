@@ -307,4 +307,58 @@
 	<delete id="delMeeting">
 		TRUNCATE TABLE meeting
 	</delete>
+	
+	<resultMap class="com.roya.dto.UserMeetingJobDTO" id="userMeetingResult">
+		<result property="id" column="id"/>
+		<result property="uid" column="uid"/>
+		<result property="meetingid" column="meetingid"/>
+		<result property="psd" column="psd"/>
+		<result property="city" column="city"/>
+		<result property="name" column="name"/>
+		<result property="position" column="position"/>
+		<result property="lastLogin" column="last_login"/>
+		<result property="comment" column="comment"/>
+		<result property="loginCount" column="login_count"/>
+		<result property="markertext" column="markertext"/>
+	</resultMap> 
+	<select id="queryUserMeetingList" resultMap="userMeetingResult"  >
+			SELECT
+				*
+			FROM
+				user_meeting al
+	</select>
+	<insert id="addUserMeeting" parameterClass="com.roya.dto.UserMeetingJobDTO">
+		<![CDATA[
+		INSERT INTO user_meeting (
+			id,
+			uid,
+			meetingid,
+			psd,
+			city,
+			name,
+			position,
+			last_login,
+			comment,
+			login_count,
+			markertext
+		)
+		VALUES
+			(
+				#id#,
+				#uid#,
+			  	#meetingid#,
+			  	#psd#,
+			  	#city#,
+			  	#name#,
+			  	#position#,
+				#lastLogin#,
+				#comment#,
+				#loginCount#,
+				#markertext#
+			)
+			]]> 
+	</insert> 
+	<delete id="delUserMeeting">
+		TRUNCATE TABLE user_meeting
+	</delete>
 </sqlMap>

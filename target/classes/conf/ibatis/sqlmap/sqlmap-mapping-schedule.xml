@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 日程 -->
+<sqlMap namespace="schedule">
+	<resultMap class="com.roya.dto.ScheduleDTO" id="scheduleListResult">
+		<result property="title" column="title"/>
+		<result property="sdate" column="sdate"/>
+		<result property="edate" column="edate"/>
+		<result property="location" column="location"/>
+		<result property="nameList" column="meetingid" select="schedule.queryMeetingUserListForID"/>
+	</resultMap> 
+	<select id="queryScheduleList" resultMap="scheduleListResult"  parameterClass="com.roya.dto.ScheduleDTO">
+			SELECT
+				m.title,m.sdate,m.edate,m.location,m.meetingid
+			FROM
+				meeting m
+			INNER JOIN
+				user_meeting um
+			on
+			m.meetingid = um.meetingid
+			and um.uid = #uid#
+	</select>
+	 <select id="queryMeetingUserListForID" parameterClass="int" resultClass="java.lang.String">
+		SELECT
+			um. NAME
+		FROM
+			user_meeting um
+		where 
+			um.meetingid = #value#
+    </select>
+</sqlMap>

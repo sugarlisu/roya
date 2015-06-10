@@ -10,6 +10,7 @@ import com.roya.dto.AddressListDTO;
 import com.roya.dto.AddressOrgDTO;
 import com.roya.dto.DocumentJobDTO;
 import com.roya.dto.MeetingJobDTO;
+import com.roya.dto.UserMeetingJobDTO;
 import com.roya.util.SqlName;
 
 @Repository("tableJobDaoImpl")
@@ -79,6 +80,23 @@ public class TableJobDaoImpl extends BaseDaoImpl implements ITableJobDao{
 	@Override
 	public void delMeeting() throws SQLException {
 		this.sqlMapClientLocal.delete(SqlName.jobDelMeeting);
+		
+	}
+
+	@Override
+	public List<UserMeetingJobDTO> queryUserMeetingList() throws SQLException {
+		return  this.sqlMapClient.queryForList(SqlName.jobQueryUserMeetingList);
+	}
+
+	@Override
+	public void addUserMeeting(UserMeetingJobDTO dto) throws SQLException {
+		this.sqlMapClientLocal.insert(SqlName.jobAddUserMeeting,dto);
+		
+	}
+
+	@Override
+	public void delUserMeeting() throws SQLException {
+		this.sqlMapClientLocal.delete(SqlName.jobDelUserMeeting);
 		
 	}
 	

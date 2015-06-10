@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 用户会议表 -->
+<sqlMap namespace="usermeeting">
+	<resultMap class="com.roya.dto.UserMeetingDTO" id="userMeetingResult">
+		<result property="id" column="ID"/>
+		<result property="uid" column="uid"/>
+		<result property="meetingid" column="meetingid"/>
+		<result property="city" column="city"/>
+		<result property="name" column="name"/>
+		<result property="position" column="position"/>
+		<result property="lastLogin" column="last_login"/>
+		<result property="comment" column="comment"/>
+		<result property="loginCount" column="login_count"/>
+		<result property="markertext" column="markertext"/>
+	</resultMap> 
+	<select id="queryUserMeeting" resultMap="userMeetingResult" parameterClass="com.roya.dto.UserMeetingDTO">
+			SELECT
+				*
+			FROM
+				user_meeting um
+			WHERE 
+				um.uid = #uid#
+			and 	
+				um.psd = #psd#
+			limit 0,1
+	</select>
+</sqlMap>

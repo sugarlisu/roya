@@ -11,6 +11,7 @@ import com.roya.dto.AddressListDTO;
 import com.roya.dto.AddressOrgDTO;
 import com.roya.dto.DocumentJobDTO;
 import com.roya.dto.MeetingJobDTO;
+import com.roya.dto.UserMeetingJobDTO;
 import com.roya.service.ITableJobService;
 
 @Service("tableJobServiceImpl")
@@ -51,6 +52,13 @@ public class TableJobServiceImpl extends BaseServiceImpl implements ITableJobSer
 		tableJobDaoImpl.delMeeting();
 		for(MeetingJobDTO dto:meetList){
 			tableJobDaoImpl.addMeeting(dto);
+		}
+		log.info("begin~~~~~~~~~~~~~~~~~~~~ user_meeting！！！！！");
+		
+		List<UserMeetingJobDTO> userMeetList = tableJobDaoImpl.queryUserMeetingList();
+		tableJobDaoImpl.delUserMeeting();
+		for(UserMeetingJobDTO dto:userMeetList){
+			tableJobDaoImpl.addUserMeeting(dto);
 		}
 	}
 
