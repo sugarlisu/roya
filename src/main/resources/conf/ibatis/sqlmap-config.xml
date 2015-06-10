@@ -14,5 +14,6 @@
 	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-address.xml" />
 	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-document.xml" />
 	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-schedule.xml" />
+	<sqlMap resource="conf/ibatis/sqlmap/sqlmap-mapping-tablejob.xml" />
 	
 </sqlMapConfig>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xss>
+	<!-- 总开关，用户总体控制Xss过滤器是否生效 -->
+	<enable>false</enable>
+	<filter-mapping>
+		<url-pattern value=".*[.]shtml$"/>
+		<exclude-url >
+		</exclude-url>
+	</filter-mapping>
+</xss>

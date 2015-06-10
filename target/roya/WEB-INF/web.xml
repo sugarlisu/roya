@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>item-manage</display-name>
+  <security-constraint>
+    <display-name>Security config</display-name>
+    <web-resource-collection>
+      <web-resource-name>protected web</web-resource-name>
+      <url-pattern>/*</url-pattern>
+      <http-method>TRACE</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>OPTIONS</http-method>
+      <http-method>HEAD</http-method>
+      <http-method>PUT</http-method>
+    </web-resource-collection>
+    <auth-constraint/>
+  </security-constraint>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath*:conf/spring/applicationContext*.xml
+		</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>annomvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>annomvc</servlet-name>
+    <url-pattern>*.shtml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>annomvc</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 编码 -->
+  <filter>
+	  <filter-name>encodingFilter</filter-name>
+	  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	  <init-param>
+	  	<param-name>encoding</param-name>
+	  	<param-value>UTF-8</param-value>
+	  </init-param>
+	    <init-param>
+	  	<param-name>forceEncoding</param-name>
+	  	<param-value>true</param-value>
+	  </init-param>
+	</filter>  
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 系统日志记录 -->
+   <filter>
+  	<filter-name>sysLogFilter</filter-name>
+  	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  	<init-param>
+  		<param-name>targetBeanName</param-name>
+  		<param-value>sysLogFilter</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>targetFilterLifecycle</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>sysLogFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- xss攻击防御 -->
+  <filter>
+  	<display-name>xssFilter</display-name>
+  	<filter-name>xssFilter</filter-name>
+  	<filter-class>com.roya.web.filter.XSSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>xssFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <welcome-file-list>
+    <welcome-file>loginPer.shtml</welcome-file>
+  </welcome-file-list>
+  
+  <filter>
+        <filter-name>jsonpFilter</filter-name>
+        <filter-class>
+             com.roya.web.filter.JSONPFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>jsonpFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+  
+  <!-- 权限控制 -->
+ <filter>
+  	<filter-name>accessFilter</filter-name>
+  	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  	<init-param>
+  		<param-name>targetBeanName</param-name>
+  		<param-value>accessControl</param-value>
+  	</init-param>
+  	
+  	<init-param>
+  		<param-name>targetFilterLifecycle</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>accessFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

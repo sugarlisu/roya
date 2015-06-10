@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +34,11 @@ public class DocumentController{
 	
 	@Autowired
 	IDocumentService documentServiceImpl;
+	
+	@Value("#{settings['fileWebPath']}")
+	private String fileWebPath;
+	
+	
 	@RequestMapping(value="/list.shtml")
 	@ResponseBody
 	public ResultMap list(HttpServletRequest request){
@@ -52,6 +58,10 @@ public class DocumentController{
 			DocumentDTO dto = new DocumentDTO();
 			dto.setUid(user.getUid());
 			List<DocumentDTO> list = documentServiceImpl.queryDocumentList(dto);
+			for (DocumentDTO viewDto:list) {
+				viewDto.setWeburl(fileWebPath+"?path="+viewDto.getWeburl());
+				
+			}
 			result.setAttribute("list", list);
 			result.setStatus(STATUS.SUCCESS);
 			result.setStatusCode(ResultMap.STATUS_CODE_SUCCESS);
