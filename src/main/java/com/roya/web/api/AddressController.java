@@ -41,11 +41,13 @@ public class AddressController{
 				result.setAttribute("list", list);
 				result.setStatus(STATUS.SUCCESS);
 				result.setStatusCode(ResultMap.STATUS_CODE_SUCCESS);
+				result.setMessage("查询通讯成功");
 				logger.info("In addressList list end!");
 		}catch(Exception e){
 			logger.error("addressList list error",e);
 			result.setStatus(STATUS.FAILE);
 			result.setStatusCode(ResultMap.STATUS_CODE_SYS_EXCEPTION);
+			result.setMessage("查询通讯失败");
 		}
 		return result;
 	}
